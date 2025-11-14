@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+ 
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   /* background: url(); */
+   background-color: rgb(117, 157, 243);
+   background-size: cover;
+   background-position: center;
+   
+   
+}
+
+
+.container{
+    width: 420px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    color: rgb(105, 35, 35);
+    padding: 30px 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border-color: rgb(105, 35, 35);
+}
+
+.container h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.container h2{
+    text-align: center; /* Centraliza o texto */
+    font-size: 18px;    /* Ajusta o tamanho da fonte */
+    margin-bottom: 25px; /* Espaço entre o texto e o botão */
+    color: rgb(105, 35, 35); /* Garante a cor */
+}
+
+.concluir{
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    border-color: rgb(105, 35, 35);
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(105, 35, 35);
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    margin-top: 10px;
+}
+
+
+.concluir:hover{
+    background-color: rgb(105, 35, 35);
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: white;
+    transition: 0.5s;
+
+}
+
+.bi-check2 {
+    display: block; 
+    font-size: 80px; 
+    color: #11005f; 
+    line-height: 1; 
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 30px; 
+    margin-bottom: 20px;
+    width: fit-content;
+}
