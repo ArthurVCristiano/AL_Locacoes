@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="MenuAdminStyle.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+    <title>AL Locações(Admin)</title>
+    
+    <style>
+        body {
+            
+            margin: 100px;
+        }
+        #calendar {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<nav id="menu-bar">
+    <div class="logo">AL Locação</div>
+    <ul class="nav-links">
+        <li><a href="#cadastro-cliente">
+            <i class='bx bxs-user-detail'></i>
+            <span>Cliente</span>
+        </a></li>
+        <li><a href="#gerenciamento-estoque">
+            <i class='bx bxs-package'></i>
+            <span>Estoque</span>
+        </a></li>
+        <li><a href="#opcoes">
+            <i class='bx bxs-cog'></i>
+            <span>Opções</span>
+        </a></li>
+        <li><a href="#alocacoes">
+            <i class='bx bxs-calendar-check'></i>
+            <span>Alocações</span>
+        </a></li>
+        <li><a href="#sair">
+            <i class='bx bxs-log-out'></i>
+            <span>Sair</span>
+        </a></li>
+    </ul>
+</nav>
+
+    <h2 id="titulo-agenda">Agenda</h2>
+
+    <div id='calendar'></div>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth', 
+                locale: 'pt-br', 
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                
+                
+                events: [
+                    {
+                        title: 'Comer o Andrei',
+                        start: '2025-11-20T10:00:00', 
+                        end: '2025-11-20T11:00:00',
+                        color: '#ff9f89' 
+                    },
+                    {
+                        title: 'Feriado',
+                        start: '2025-11-15', 
+                        allDay: true
+                    }
+                ],
+                
+                
+                dateClick: function(info) {
+                    alert('Clicou na data: ' + info.dateStr);
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+
+</body>
+</html>
