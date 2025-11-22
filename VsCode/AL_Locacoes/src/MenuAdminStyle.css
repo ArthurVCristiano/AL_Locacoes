@@ -29,10 +29,382 @@ body {
     z-index: 1000; 
 }
 
-.logo {
-    font-size: 1.7em;
+.hidden {
+    display: none !important; 
+}
+
+.cliente-container {
+    background-color: #0056b3; 
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Rodapé de contato de AL Locações*/ 
+.contato-fixo {
+    width: 100%; 
+    background-color: #0056b3;
+    color: white; 
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); 
+    margin-top: 30px;
+
+}
+
+.container-contato {
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.link-social {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-decoration: none; 
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.link-social:hover {
+    color: #3498db; 
+}
+
+.link-social i {
+    font-size: 1.8em; 
+    margin-bottom: 3px;
+}
+
+#titulo-listagem{
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #1A439F;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: center;
+    padding-left: 20px;
+}
+
+#locacoes-list{
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #3d6ddd;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.locacoes-conteiner{
+    font-size: 1.8em;
+    background-color: #0056b3; 
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#titulo-ativas{
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #3d6ddd;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: center;
+    padding-left: 20px;
+    position: center;
+
+}
+
+#conteudo-locacoes{
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #3d6ddd;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* Tela de clientes*/
+
+#titulo-cliente{
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #1A439F;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: center;
+    padding-left: 20px;
+    
+}
+
+.titulo-listaClientes{
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #1A439F;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.clientes-list{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #3d6ddd;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.botao-novo-cliente{
+    width: 20%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    border-color: #1A439F;
+    cursor: pointer;
+    font-size: 16px;
+    color: #1A439F;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    top: 0px;
+    left: 650px;
+}
+
+.botao-novo-cliente:hover{
+    background-color: #1A439F;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: white;
+    transition: 0.5s;
+}
+
+/* Tela de estoque */
+
+
+.estoque-container {
+    background-color: #0056b3; 
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#titulo-estoque{
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #1A439F;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: center;
+    padding-left: 20px;
+    
+}
+
+.titulo-listaProdutos{
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #1A439F;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.produtos-list{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #3d6ddd;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.botao-novo-produto{
+    width: 20%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    border-color: #1A439F;
+    cursor: pointer;
+    font-size: 16px;
+    color: #1A439F;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    top: 0px;
+    left: 650px;
+}
+
+.botao-novo-produto:hover{
+    background-color: #1A439F;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: white;
+    transition: 0.5s;
+}
+
+/* TELA DE OPÇÕES */
+
+.titulo-opcoes{
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #1A439F;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.opcoes-lista{
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #2a4ea1;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* Contrato */
+
+#tela-contrato {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ADD8E6; 
+    z-index: 999; 
+    padding: 0;
+    overflow-y: auto; 
+}
+
+
+.header-contrato {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #00008B; 
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.header-contrato a {
+    color: white;
+    font-size: 1.5em;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+
+.contrato-conteudo {
+    padding: 20px;
+}
+
+.contrato-texto {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contrato-texto p {
+    font-size: 0.9em;
+    line-height: 1.6; 
+    color: #333;
+    margin-bottom: 15px;
+}
+
+
+.contrato-botoes button {
+    width: 50%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 25px; 
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: center;
+    width: 20%;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.btn-download {
+    background-color: #2218ad;
+    color: white;
+    text-align: center;
+    position: center;
+    margin: 0 15px;
+}
+
+.btn-pdf {
+    background-color: #00008B;
+    color: white;
+    text-align: center;
+    position: center;
+    margin: 0 15px;
+}
+
+/* */
+
+
+.titulo-agenda{
+    position: fixed;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+}
+
+#link-logo {
+    font-size: 2.2em;
     font-weight: bold;
     margin-right: 0;
+    background-color: #0056b3; 
+    border-color: #0056b3;
+    color: #ffffff;
+    text-decoration: none;
 }
 .nav-links {
     list-style: none; 
@@ -127,21 +499,6 @@ body {
     font-weight: 600;        
 }
 
-/* Botões primários */
-.fc .fc-button-primary {
-    background-color: rgb(117, 157, 243);
-    border: 1.5px solid;
-    border-color: #0056b3;
-    color: white; 
-    font-weight: 600;
-}
-
-.fc .fc-button-primary:not(:disabled).fc-button-active,
-.fc .fc-button-primary:hover {
-    background-color: rgb(79, 128, 235); 
-    border-color: #0056b3; 
-}
-
 /*Colunas de fim de semana */
 
 .fc-day-other .fc-daygrid-day-number {
@@ -164,3 +521,4 @@ body {
 .fc-icon fc-icon-chevron-left{
     background-color: rgb(117, 157, 243);
 }
+

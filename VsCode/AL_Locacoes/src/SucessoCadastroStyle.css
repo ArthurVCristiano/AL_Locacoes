@@ -39,10 +39,10 @@ body{
 }
 
 .container h2{
-    text-align: center; /* Centraliza o texto */
-    font-size: 18px;    /* Ajusta o tamanho da fonte */
-    margin-bottom: 25px; /* Espaço entre o texto e o botão */
-    color: rgb(105, 35, 35); /* Garante a cor */
+    text-align: center; 
+    font-size: 18px;    
+    margin-bottom: 25px;
+    color: rgb(105, 35, 35); 
 }
 
 .concluir{
