@@ -48,11 +48,6 @@
             flex: 3;
             text-align: right;
         }
-        .subtotal-item {
-            flex: 1.5;
-            text-align: right;
-            font-weight: bold;
-        }
         .btn-remover {
             margin-left: 10px;
             background: #e74c3c;
@@ -65,6 +60,7 @@
         #carrinho-total h3 {
             text-align: right;
             margin-top: 20px;
+            color: #1b70ca;
         }
         .pagamento-container {
             max-width: 400px;
@@ -189,12 +185,12 @@
                     <div class="carrinho-container">
                         
                         <button id="btn-iniciar-checkout" class="fechar-pedido-btn">Fechar Pedido (0 itens)</button>
-                        
+                        <!--
                         <div class="subtotal-info">
                             <p>Subtotal: R$ VALOR TOTAL</p>
                             <p>Frete e Manuseio: R$ VALOR DE FRETE</p>
                         </div>
-                        
+                        -->
                         <div class="produtos-carrinho-lista">
                             <section id="carrinho-display">
                                 <h2>Seu Carrinho</h2>
@@ -250,11 +246,9 @@
                 <div class="qrcode-area">
                     <p>Escaneie o QR Code abaixo para efetuar o pagamento:</p>
                     
-
-[Image of a placeholder QR code]
  
-                    <img src="https://via.placeholder.com/250" alt="QR Code PIX para pagamento" id="qrcode-pix">
-                    <p class="chave-pix-texto">Chave PIX Copia e Cola (simulada): **AL_Locacao.Simulacao**</p>
+                    <img src="/assets/imagens/Link_pra_pagina_principal_da_Wikipedia-PT_em_codigo_QR_b.svg.webp" alt="QR Code PIX para pagamento" id="qrcode-pix">
+                    <p class="chave-pix-texto">Chave PIX Copia e Cola: HFDAUDHSAUDHASUDHASDIADDADHASUDA</p>
                 </div>
                 
                 <button id="btn-voltar-checkout" class="btn-secundario">← Voltar aos Dados</button>
@@ -284,9 +278,8 @@
     </main>
     
     <footer class="contato-fixo">...</footer>
-
     <script>   
-        
+      
         const telas = {
             'catalogo': null, 
             'locacao': null,
@@ -323,7 +316,6 @@
         }
 
         /**
-         * 
          * @param {Object} novoItem 
          */
         window.adicionarAoCarrinho = function(novoItem) {
@@ -342,7 +334,6 @@
         }
 
         /**
-         * 
          * @param {number} index 
          */
         window.removerItem = function(index) {
@@ -396,7 +387,7 @@
             
             listaCarrinhoElement.innerHTML = htmlItens;
             totalCarrinhoElement.innerHTML = `
-                <h3>Valor Total: **R$ ${totalGeral.toFixed(2).replace('.', ',')}**</h3>
+                <h3>Valor Total: R$ ${totalGeral.toFixed(2).replace('.', ',')}</h3>
             `;
 
             if (btnCheckout) {
@@ -406,6 +397,17 @@
             if (valorFinalPixElement) {
                 valorFinalPixElement.textContent = `R$ ${totalGeral.toFixed(2).replace('.', ',')}`;
             }
+        }
+
+        /**
+         * @param {Object} locacao 
+         */
+        function salvarLocacaoAdmin(locacao) {
+            let locacoes = JSON.parse(localStorage.getItem('locacoesAdmin')) || [];
+            locacao.id = Date.now(); 
+            locacoes.push(locacao);
+            localStorage.setItem('locacoesAdmin', JSON.stringify(locacoes));
+            console.log("Locação salva para Admin:", locacao);
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -473,7 +475,29 @@
             const btnFinalizarPedido = document.getElementById('btn-finalizar-pedido');
             if (btnFinalizarPedido) {
                 btnFinalizarPedido.addEventListener('click', function() {
-                    alert('Pedido finalizado com sucesso! Aguardando confirmação do PIX.');
+
+                    const nomeCliente = document.getElementById('nome-cliente-checkout').value;
+                    const endereco = document.getElementById('endereco-entrega').value;
+                    const dataInicio = document.getElementById('data-inicio-loc').value;
+                    const dataFim = document.getElementById('data-fim-loc').value;
+
+                    const itens = JSON.parse(localStorage.getItem('carrinhoLocacao')) || [];
+                    const totalGeral = itens.reduce((total, item) => total + (item.preco * item.quantidade), 0);
+
+                    const dadosCompletosLocacao = {
+                        cliente: nomeCliente,
+                        enderecoEntrega: endereco,
+                        dataInicio: dataInicio,
+                        dataFim: dataFim,
+                        itens: itens,
+                        valorTotal: totalGeral.toFixed(2),
+                        status: 'Aguardando Confirmação PIX',
+                    };
+
+                    salvarLocacaoAdmin(dadosCompletosLocacao);
+
+                    alert('Pedido finalizado com sucesso! Aguardando confirmação do PIX. Seus dados foram registrados para o Admin.');
+
                     localStorage.removeItem('carrinhoLocacao');
                     carrinho = [];
                     

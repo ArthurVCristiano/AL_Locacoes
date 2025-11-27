@@ -233,6 +233,36 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+   
+        function carregarEventosLocacoes() {
+
+            const locacoes = JSON.parse(localStorage.getItem('locacoesAdmin')) || [];
+
+            const eventos = locacoes.map(locacao => {
+ 
+                const dataFimExclusiva = new Date(locacao.dataFim);
+                if (!isNaN(dataFimExclusiva)) {
+                    dataFimExclusiva.setDate(dataFimExclusiva.getDate() + 1);
+                }
+
+                const title = `Loc: ${locacao.cliente || 'Cliente'} (R$${locacao.valorTotal || 'N/A'})`;
+
+                return {
+                    id: locacao.id, 
+                    title: title,
+                    start: locacao.dataInicio,
+                    end: dataFimExclusiva.toISOString().split('T')[0], 
+                    allDay: true,
+                    color: '#2a6a9b', 
+                };
+            });
+
+            const eventosEstaticos = [
+                { title: 'Feriado', start: '2025-11-15', allDay: true, color: '#ff6961' }
+            ];
+
+            return [...eventos, ...eventosEstaticos];
+        }
        
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -243,10 +273,8 @@
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            events: [
-                { title: 'Comer o Andrei', start: '2025-11-20T10:00:00', end: '2025-11-20T11:00:00', color: '#ff9f89' },
-                { title: 'Feriado', start: '2025-11-15', allDay: true }
-            ],
+
+            events: carregarEventosLocacoes, 
             dateClick: function(info) {
                 alert('Clicou na data: ' + info.dateStr);
             }
@@ -288,6 +316,7 @@
                 default:
                     telaCalendario.classList.remove('hidden');
                     if (typeof calendar !== 'undefined') {
+                        calendar.refetchEvents(); 
                         calendar.render(); 
                     }
                     break;
@@ -330,7 +359,13 @@
             if (event.target === modalLocacao) modalLocacao.classList.add('hidden');
         });
 
-        // AQUI VAI FAZER A INTEGRAÇÃO COM BANCO DE DADOS ->
+        function salvarLocacaoAdmin(locacao) {
+            let locacoes = JSON.parse(localStorage.getItem('locacoesAdmin')) || [];
+            locacao.id = Date.now(); 
+
+            locacoes.push(locacao);
+            localStorage.setItem('locacoesAdmin', JSON.stringify(locacoes));
+        }
 
         const formCliente = document.getElementById('form-cliente');
         const formProduto = document.getElementById('form-produto');
@@ -340,8 +375,31 @@
         if (formProduto) formProduto.addEventListener('submit', function(event) { event.preventDefault(); alert('Produto cadastrado!'); modalProduto.classList.add('hidden'); formProduto.reset(); });
         if (formLocacao) formLocacao.addEventListener('submit', function(event) { 
             event.preventDefault(); 
+            
+            const cliente = "Locação Manual Admin"; 
             const dataInicio = formLocacao.querySelector('#dataInicioLocacao').value;
-            alert('Locação com início em ' + dataInicio + ' cadastrada! (Simulado)');
+            const dataFim = formLocacao.querySelector('#dataRetiradaLocacao').value;
+            
+            if (!dataInicio || !dataFim) {
+                alert('Por favor, preencha as datas de início e retirada.');
+                return;
+            }
+
+            const novaLocacao = {
+                id: Date.now(),
+                cliente: cliente,
+                dataInicio: dataInicio,
+                dataFim: dataFim,
+                valorTotal: '0.00', 
+                status: 'Cadastrada Manualmente'
+            };
+            
+            salvarLocacaoAdmin(novaLocacao);
+            
+
+            calendar.refetchEvents(); 
+
+            alert(`Locação para ${cliente}, de ${dataInicio} a ${dataFim} cadastrada!`);
             if (modalLocacao) modalLocacao.classList.add('hidden'); 
             formLocacao.reset(); 
         });
