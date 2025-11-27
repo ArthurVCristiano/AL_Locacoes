@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="MenuAdminStyle.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+    <title>AL Locações(Admin)</title>
+    <script src="/server.js"></script>
+    <style>
+       
+        .hidden {
+            display: none !important;
+        }
+        body {
+            margin-top: 100px; 
+        }
+        #calendar {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<nav id="menu-bar">
+    <div class="logo"><a href="#" id="link-logo">AL Locação</a></div>
+    <ul class="nav-links">
+        <li><a href="#" id="link-cliente">
+            <i class='bx bxs-user-detail'></i>
+            <span>Cliente</span>
+        </a></li>
+        <li><a href= # id = "link-estoque">
+            <i class='bx bxs-package'></i>
+            <span>Estoque</span>
+        </a></li>
+        <li><a href= # id = "link-opcoes">
+            <i class='bx bxs-cog'></i>
+            <span>Opções</span>
+        </a></li>
+        <li><a href= # id = "link-alocacoes">
+            <i class='bx bxs-calendar-check'></i>
+            <span>Alocações</span>
+        </a></li>
+        <li><a href= # id = "link-sair">
+            <i class='bx bxs-log-out'></i>
+            <span>Sair</span>
+        </a></li>
+    </ul>
+</nav>
+
+
+<!-- TELA DE CLIENTES -->
+
+<main>
+    <section id="tela-calendario">
+        <h2 id="titulo-agenda">Calendário de eventos</h2>
+        <div id='calendar'></div>
+        <div class="locacoes-ativas">
+            <p id="titulo-ativas">Locações Ativas:</p>
+            <div class="locacoes-conteiner">
+            <h1 id="conteudo-locacoes">Colocar locações aqui</h1>
+        </div>
+    </section>
+
+    <section id="tela-estoque" class="hidden">
+        <h2 id="titulo-estoque">Cadastro e Lista de Produtos</h2>
+        <div class="estoque-container">
+            <h3 class="titulo-listaProdutos">Produtos</h3>
+            <p class="produtos-list">BOTAR Podutos AQUI -></p>
+            <button id = 'btn-novo-produto'>Novo Produto</button>
+        </div>
+    </section>
+
+    <section id="tela-opcoes" class="hidden">
+        <div class="header-opcoes">
+        <h2 class="titulo-opcoes">OPÇÕES</h2>
+    </div>
+
+    <ul class="opcoes-lista">
+        <li id="link-contrato">
+            <i class='bx bxs-file-pdf'></i>
+            <span id = 'contrato-opcao'>Contrato</span>
+        </li>
+        <li>
+            <i class='bx bxs-log-out-circle'></i>
+            <span id="sair-opcao">Sair</span>
+        </li>
+        <li>
+            <i class='bx bxs-log-out-circle'></i>
+            <span id="trocar-opcao">Trocar para Clinte</span>
+        </li>
+    </ul>
+    </section>
+
+    <section id="tela-contrato" class="hidden">
+    <div class="header-contrato">
+        <a href="#" id="link-voltar-opcoes">
+            <i class='bx bx-arrow-back'></i>
+        </a>
+        <span>CONTRATO</span>
+    </div>
+
+    <div class="contrato-conteudo">
+        <div class="contrato-texto">
+            <p id = 'titulo-contrato'>CONTRATO DE LOCAÇÃO DE MESAS E CADEIRAS</p>
+            <p>Pelo presente instrumento, de um lado AL Locação, situado na Rua Maria Leopoldina da Silva, 1340 no bairro Pacheco-Palhoça -SC doravante denominado(a) LOCADOR(a) e de outro lado  (Nome cliente)      CPF (CPF cliente) Local (Endereço)   doravante denominado(a) LOCATÁRIO(a), têm, entre si, justo e acertado o presente contrato de locação de mesas e cadeiras que se regerá pelas cláusulas e condições descritas a seguir.</p>
+            <p>Cláusula 1ª. O presente contrato tem como objeto de (quantidade e produto) , todas em bom  estado de conservação e limpeza, de propriedade do(a) LOCADOR(a), que serão locadas ao(à) LOCATÁRIO(a).</p>
+            <p>Cláusula 2ª. É vedado ao(à) LOCATÁRIO(a) transferir, sublocar, ceder ou emprestar os bens ora locados a terceiros.</p>dicado pelo(a) LOCATÁRIO(a), qual seja, (endereço), e finalizando no dia (data), quando os bens serão retirados pelo(a) LOCADOR(a).</p>
+            <p>Cláusula 3ª. A locação terá duração de (prazo de locação), com início em (data), quando os bens serão entregues pelo(a) LOCADOR(A) no endereço indicado pelo(a) LOCATÁRIO(a), qual seja, (endereço), e finalizando no dia (data), quando os bens serão retirados pelo(a) LOCADOR(a).</p>
+            <p>Cláusula 4ª O valor do aluguel será de (valor locação), a ser pago pelo(a) LOCATÁRIO(a) no momento da entrega dos bens.</p>
+            <p>Cláusula 5ª. Caso não ocorra o pagamento no prazo mencionado na cláusula anterior este contrato será automaticamente rescindido incorrendo o(a) LOCATÁRIO(a) em multa no valor de R$ (valor da locação).</p>
+            <p>Cláusula 6ª. Ao final da locação os bens deverão ser devolvidos pelo(a) LOCATÁRIO(a) nas mesmas condições de limpeza e conservação em que foram recebidos, sem riscos , queimadas ou quebradas sob pena de responder por perdas e danos além dos custos de limpeza.</p>
+            <p>Cláusula 7ª. Caso o prazo para devolução dos bens, especificado na cláusula terceira, não seja respeitado pelo(a) LOCATÁRIO(a), que deixar de disponibilizar os bens para retirada, este(a) incorrerá em multa de R$ 250 reais por dia de atraso.</p>
+            <p>Locador ass:....................</p>
+            <p>Locatário ass:..................</p>
+        </div>
+
+        <div class="contrato-botoes">
+            <button class="btn-download">Download</button>
+            <button class="btn-pdf">Baixar em PDF</button>
+        </div>
+    </div>
+    </section>
+
+    <section id="tela-alocacoes" class="hidden">
+        <h2 id="titulo-listagem">Listagem de locações/Reservas</h2>
+        <p id="locacoes-list">Conteúdo da tela de locações.</p>
+        <div class="locacoes-conteiner">
+            <h1 id="conteudo-locacoes">Colocar locações aqui</h1>
+            <button id='btn-novo-locacao'>Registrar Nova Locação</button>
+        </div>
+    </section>
+
+    <section id="tela-sair" class="hidden">
+        <h2>Tela de Saída</h2>
+        <p>Clique <a href="/Login.html">aqui</a> para sair ou confirme o logout.</p>
+    </section>
+
+    <section id="tela-cliente" class="hidden">
+        <h2 id="titulo-cliente">Cadastro e Lista de Clientes</h2>
+        <div class="cliente-container">
+            <h3 class="titulo-listaClientes">Lista de Clientes</h3>
+            <button id="btn-consultar" onclick="consultarClientes()">consultar</button>
+            <button id='btn-novo-cliente'>Novo Cliente</button>
+        </div>
+    </section>
+
+    
+</main>
+
+<div id="cadastro-modal-cliente" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn close-btn-cliente">&times;</span> 
+        <h2 class="titulo-cadastro">Cadastro de Novo Cliente</h2>
+        
+        <form id="form-cliente">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome-cliente" name="nome" required> </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email-cliente" name="email" required> </div>
+            <div class="form-group">
+                <label for="telefone">Telefone/WhatsApp:</label>
+                <input type="tel" id="telefone-cliente" name="telefone"> </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco-cliente" name="endereco"> </div>
+            <button type="submit" class="btn-salvar" onclick="cadastrarCliente()">Salvar Cliente</button>
+        </form>
+    </div>
+</div>
+
+
+<div id="cadastro-modal-produto" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span> <h2 class="titulo-cadastro">Cadastro de Novo Produto</h2>
+        
+        <form id="form-produto">
+            <div class="form-group">
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Quantidade em estoque:</label>
+                <input type="number" id="numer" name="number" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Valor de venda:</label>
+                <input type="number" id="number" name="number">
+            </div>
+            <div class="form-group">
+                <label for="text">Descrição: (opcional)</label>
+                <input type="text" id="desc" name="desc">
+            </div>
+            <button type="submit" class="btn-salvar">Salvar Produto</button>
+        </form>
+
+    </div>
+</div>
+
+<div id="cadastro-modal-locacao" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn close-btn-locacao">&times;</span> 
+        <h2 class="titulo-cadastro">Cadastro de Nova Locação</h2>
+        
+        <form id="form-locacao">
+            <div class="form-group">
+                <label for="clientes-nome">Nome Completo:</label>
+                <input type="checkbox" id="clientes" name="clientes" required> </div>
+            <div class="form-group">
+                <label for="tel">Número de contato do cliente: (Puxar automaticamente do cliente selecionado no checkbox)</label>
+                <input type="tel" id="tel" name="tel" required> </div>
+            <div class="form-group">
+                <label for="endereco-text">Endereço:</label>
+                <input type="text" id="text" name="text"> </div>
+            <div class="form-group">
+                <label for="data-inicio">Data de inicio:</label>
+                <input type="date" id="dataInicioLocacao" name="dataInicio"> </div>
+            <div class="form-group">
+                <label for="data">Data de retirada:</label>
+                <input type="date" id="dataRetiradaLocacao" name="dataRetirada"> </div>
+            <button type="submit" class="btn-salvar">Salvar Cliente</button>
+        </form>
+    </div>
+</div>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
+<script>
+   async function cadastrarCliente(){
+        const novoCliente = {
+        nome: document.getElementById("nome-cliente").value,
+        email: document.getElementById("email-cliente").value,
+        telefone:  document.getElementById("telefone-cliente").value,
+        endereco: document.getElementById("endereco-cliente").value
+    };
+    console.log(novoCliente.json);
+    await fetch("http://localhost:3000/clientes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(novoCliente)
+    });
+
+    alert("Cliente salvo!");
+    }
+
+    async function consultarClientes(){
+        const resp = await fetch("http://localhost:3000/clientes")
+        const clientes = reps.json();
+        console.log("Clientes:", clientes)
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+       
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth', 
+            locale: 'pt-br', 
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: [
+                
+                { title: 'Feriado', start: '2025-11-15', allDay: true }
+            ],
+            dateClick: function(info) {
+                alert('Clicou na data: ' + info.dateStr);
+            }
+        });
+        calendar.render();
+
+        const linkCliente = document.getElementById('link-cliente');
+        const linkEstoque = document.getElementById('link-estoque');
+        const linkOpcoes = document.getElementById('link-opcoes');
+        const linkAlocacoes = document.getElementById('link-alocacoes');
+        const linkLogo = document.getElementById('link-logo'); 
+        const linkContrato = document.getElementById('link-contrato'); 
+        const linkVoltarOpcoes = document.getElementById('link-voltar-opcoes');
+        const linkSair = document.getElementById('link-sair');
+    
+        const telaCalendario = document.getElementById('tela-calendario');
+        const telaCliente = document.getElementById('tela-cliente');
+        const telaEstoque = document.getElementById('tela-estoque');
+        const telaOpcoes = document.getElementById('tela-opcoes');
+        const telaAlocacoes = document.getElementById('tela-alocacoes');
+        const telaContrato = document.getElementById('tela-contrato');
+     
+        function mostrarTela(tela) {
+
+            telaCalendario.classList.add('hidden');
+            telaCliente.classList.add('hidden');
+            telaEstoque.classList.add('hidden');
+            telaOpcoes.classList.add('hidden');
+            telaAlocacoes.classList.add('hidden');
+            telaContrato.classList.add('hidden');
+
+            switch (tela) {
+                case 'cliente': telaCliente.classList.remove('hidden'); break;
+                case 'estoque': telaEstoque.classList.remove('hidden'); break;
+                case 'opcoes': telaOpcoes.classList.remove('hidden'); break;
+                case 'alocacoes': telaAlocacoes.classList.remove('hidden'); break;
+                case 'contrato': telaContrato.classList.remove('hidden'); break;
+                case 'calendario':
+                default:
+                    telaCalendario.classList.remove('hidden');
+                    if (typeof calendar !== 'undefined') {
+                        calendar.render(); 
+                    }
+                    break;
+            }
+        }
+        
+        if (linkCliente) linkCliente.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('cliente'); });
+        if (linkEstoque) linkEstoque.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('estoque'); });
+        if (linkOpcoes) linkOpcoes.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('opcoes'); });
+        if (linkAlocacoes) linkAlocacoes.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('alocacoes'); });
+        if (linkSair) linkSair.addEventListener('click', function(event) { event.preventDefault(); window.location.href = 'Login.html'; });
+        if (linkLogo) linkLogo.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('calendario'); });
+        if (linkContrato) linkContrato.addEventListener('click', function(event) { event.preventDefault(); if (telaContrato) { mostrarTela('contrato'); } });
+        if (linkVoltarOpcoes) linkVoltarOpcoes.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('opcoes'); });
+    
+
+        const btnNovoCliente = document.getElementById('btn-novo-cliente');
+        const btnNovoProduto = document.getElementById('btn-novo-produto');
+        const btnNovaLocacao = document.getElementById('btn-novo-locacao'); 
+        
+        const modalCliente = document.getElementById('cadastro-modal-cliente');
+        const modalProduto = document.getElementById('cadastro-modal-produto');
+        const modalLocacao = document.getElementById('cadastro-modal-locacao'); 
+        
+        const closeBtnCliente = document.querySelector('.close-btn-cliente');
+        const closeBtnProduto = document.querySelector('.close-btn'); 
+        const closeBtnLocacao = document.querySelector('.close-btn-locacao');
+        
+        if (btnNovoCliente) btnNovoCliente.addEventListener('click', function() { modalCliente.classList.remove('hidden'); });
+        if (btnNovoProduto) btnNovoProduto.addEventListener('click', function() { modalProduto.classList.remove('hidden'); });
+        if (btnNovaLocacao) btnNovaLocacao.addEventListener('click', function() { modalLocacao.classList.remove('hidden'); });
+
+        if (closeBtnCliente) closeBtnCliente.addEventListener('click', function() { modalCliente.classList.add('hidden'); });
+        if (closeBtnProduto) closeBtnProduto.addEventListener('click', function() { modalProduto.classList.add('hidden'); }); 
+        if (closeBtnLocacao) closeBtnLocacao.addEventListener('click', function() { modalLocacao.classList.add('hidden'); });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modalCliente) modalCliente.classList.add('hidden');
+            if (event.target === modalProduto) modalProduto.classList.add('hidden');
+            if (event.target === modalLocacao) modalLocacao.classList.add('hidden');
+        });
+
+        // AQUI VAI FAZER A INTEGRAÇÃO COM BANCO DE DADOS ->
+
+        const formCliente = document.getElementById('form-cliente');
+        const formProduto = document.getElementById('form-produto');
+        const formLocacao = document.getElementById('form-locacao');
+
+        if (formCliente) formCliente.addEventListener('submit', function(event) { event.preventDefault(); alert('Cliente cadastrado!'); modalCliente.classList.add('hidden'); formCliente.reset(); });
+        if (formProduto) formProduto.addEventListener('submit', function(event) { event.preventDefault(); alert('Produto cadastrado!'); modalProduto.classList.add('hidden'); formProduto.reset(); });
+        if (formLocacao) formLocacao.addEventListener('submit', function(event) { 
+            event.preventDefault(); 
+            const dataInicio = formLocacao.querySelector('#dataInicioLocacao').value;
+            alert('Locação com início em ' + dataInicio + ' cadastrada! (Simulado)');
+            if (modalLocacao) modalLocacao.classList.add('hidden'); 
+            formLocacao.reset(); 
+        });
+        
+    });
+</script>
+
+
+<footer class="contato-fixo">
+    <div class="container-contato">
+        <h1 id="fale-conosco">Fale Conosco:</h1>
+        <a href="https://www.instagram.com/al3locacao/" target="_blank" class="link-social">
+            <i class='bx bxl-instagram'></i>
+            <span>Instagram</span>
+        </a>
+        <a href="https://wa.me/554899979376" target="_blank" class="link-social">
+            <i class='bx bxl-whatsapp'></i>
+            <span>WhatsApp</span>
+        </a>
+        <a href="mailto:arthurvelhocristiano@gmail.com" class="link-social">
+            <i class='bx bxs-envelope'></i>
+            <span>Email</span>
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

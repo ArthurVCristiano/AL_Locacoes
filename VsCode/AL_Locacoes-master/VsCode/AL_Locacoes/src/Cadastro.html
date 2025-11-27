@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="cadastroStyle.css">
+    <title>Cadastrar-se AL Locações</title>
+</head>
+<body>
+    <main class="container">
+         <form action="MsgCadastrado.html" method="GET">
+            <h1> Cadastro AL Locações</h1>
+                <h2 class="subTitle">Bem vindo ao AL Locaçoes! Preencha corretamente as linhas com suas credencias para efetuar cadastro no nosso sistema.</h2>
+
+                <div class="input-box">
+                    <label for="caixa_nome">Nome:</label>
+                    <input placeholder="Nome Completo" type="text" id="nome">
+                </div>
+
+                <div class="input-box"> 
+                    <label for="caixa_data">Data de Nascimento:</label>
+                    <input placeholder="00/00/0000" type="date" id="dataNascimento">
+                </div>
+
+                <div class="input-box">
+                    <label for="caixa_cpf">CPF:</label>
+                    <input type="text" placeholder="000.000.000-00" id="cpf" maxlength="14">
+                </div>
+            
+                 <div class="input-box">
+                    <label for="caixa_telefone">Telefone:</label>
+                    <input type="tel" placeholder="(DDD) Telefone" id="tel" maxlength="9">
+                </div>
+
+                 <div class="input-box">
+                    <label for="caixa_email">E-mail:</label>
+                    <input type="email" id="email">
+                </div>
+
+                <div class="input-box">
+                    <label for="caixa_senha">Senha:</label>
+                    <input type="password" placeholder="Mínimo de 6 caracteres" id="senha" minlength="5">
+                </div>
+
+                <button type="submit" class="cadastrar">
+                    Cadastra-se 
+                </button>
+
+            </form>
+    </main>
+</body>
+</html>

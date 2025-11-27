@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="MenuAdminStyle.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="catalogoClienteStyle.css"> 
+    <title>AL Locações</title>
+</head>
+<body>
+
+    <header id="menu-bar">
+        <div class="link-logo"><a href="#" id="link-logo">AL Locação</a></div>
+        <ul class="nav-links">
+            <li><a href="#" id="link-carrinho">
+                <i class='bx bxs-cart'></i>
+                <span>Carrinho</span> </a></li>
+            <li><a href="#" id="link-opcoes">
+                <i class='bx bxs-cog'></i>
+                <span>Opções</span>
+            </a></li>
+            <li><a href="#" id="link-sair">  
+                <i class='bx bxs-log-out'></i>
+                <span>Sair</span>
+            </a></li>
+        </ul>
+    </header>
+
+    <main id="main-content-area"> <section id="tela-catalogo">
+            <h1 class="titulo-catalogo">Catálogo de Produtos</h1>
+            
+            <div class="produtos-lista">
+                <article class="produto-card" data-produto-id="1">
+                <div class="produto-imagem">
+                    <img src="/assets/imagens/conjuntoPlastico.png" alt="Conjunto: Mesa + 4 Cadeiras">
+                </div>
+                <div class="produto-detalhes">
+                    <h2 class="produto-nome">Conjunto: Mesa + 4 Cadeiras</h2>
+                    <p class="produto-preco">R$ 13,00 <span class="unidade-texto">Conjunto</span></p>
+                    <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
+                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                    </div>
+                </article>
+                
+                <article class="produto-card" data-produto-id="2">
+		                <div class="produto-imagem">
+                    <img src="/assets/imagens/cadeira-de-plastico-latina-6734d1b466bdb.png" alt="Cadeira unitária">
+                </div>
+                <div class="produto-detalhes">
+                    <h2 class="produto-nome">Cadeira unitária</h2>
+                    <p class="produto-preco">R$ 3,00 <span class="unidade-texto">Unidade</span></p>
+                    <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
+                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                </div>
+                </article>
+                
+                <article class="produto-card" data-produto-id="3">
+                 <div class="produto-imagem">
+                    <img src="/assets/imagens/MesaPlastico.jpg" alt="Mesa unitária">
+                </div>
+                <div class="produto-detalhes">
+                    <h2 class="produto-nome">Mesa unitária</h2>
+                    <p class="produto-preco">R$ 8,50 <span class="unidade-texto">Unidade</span></p>
+                    <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
+                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                </div></article>
+                
+                <article class="produto-card" data-produto-id="4">
+                <div class="produto-imagem">
+                    <img src="/assets/imagens/TOALHANAMESA.jpeg" alt="Toalha de Mesa - Branca">
+                </div>
+                <div class="produto-detalhes">
+                    <h2 class="produto-nome">Toalha de Mesa - Branca</h2>
+                    <p class="produto-preco">R$ 8,50<span class="unidade-texto">Unidade</span></p>
+                    <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
+                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                </div></article>
+            </div>
+        </section>
+
+        <section id="tela-locacao" class="hidden"> 
+    <h1 class="page-title titulo-carrinho">Carrinho de compras</h1>
+
+    <div id="carrinho-wrapper" class="transicao-wrapper">
+        
+        <div id="carrinho-passo-1" class="carrinho-passo">
+            <div class="carrinho-container">
+                
+                <button id="btn-iniciar-checkout" class="fechar-pedido-btn">Fechar Pedido (QUANTIDADE DE itens)</button>
+                
+                <div class="subtotal-info">
+                    <p>Subtotal: R$ VALOR TOTAL</p>
+                    <p>Frete e Manuseio: R$ VALOR DE FRETE</p>
+                </div>
+                
+                <div class="produtos-carrinho-lista">
+                    </div>
+                
+                <div class="frete-info">
+                    <p class="frete-label">Frete:</p>
+                    <p class="frete-servico">Servidão João Pedro Cristiano, 160</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="carrinho-passo-2" class="carrinho-passo">
+            <div class="carrinho-container">
+                <h2 class="titulo-checkout">Dados para Locação</h2>
+                
+                <form id="form-checkout">
+                    <div class="form-group">
+                        <label for="nome-cliente-checkout">Nome:</label>
+                        <input type="text" id="nome-cliente-checkout" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco-entrega">Endereço de Entrega:</label>
+                        <input type="text" id="endereco-entrega" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="data-inicio-loc">Data de Início:</label>
+                        <input type="date" id="data-inicio-loc" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-fim-loc">Data de Fim:</label>
+                        <input type="date" id="data-fim-loc" required>
+                    </div>
+
+                    <button type="button" id="btn-voltar-carrinho" class="btn-secundario">← Voltar</button>
+                    <button type="submit" id="btn-avancar-pagamento" class="fechar-pedido-btn">Avançar para Pagamento</button>
+                </form>
+            </div>
+        </div>
+        
+    </div> </section>
+        
+        <section id="tela-opcoes" class="hidden">
+            <div class="header-opcoes">
+                <h2 class="titulo-opcoes">OPÇÕES</h2>
+            </div>
+            <ul class="opcoes-lista">
+                <li id="link-contrato"><i class='bx bxs-file-pdf'></i><span id='contrato-opcao'>Contrato</span></li>
+                <li id="link-trocar-cliente"><i class='bx bxs-log-out-circle'></i><span id="trocar-opcao">Trocar para Cliente</span></li>
+                <li id="link-sair-opcoes"><i class='bx bxs-log-out-circle'></i><span id="sair-opcao">Sair</span></li>
+            </ul>
+        </section>
+
+        <section id="tela-contrato" class="hidden">
+            </section>
+        
+        <section id="tela-sair" class="hidden">
+            <h2>Tela de Saída</h2>
+            <p>Clique <a href="/Login.html">aqui</a> para sair ou confirme o logout.</p>
+        </section>
+
+    </main>
+    
+    <footer class="contato-fixo">...</footer>
+
+    <script>   
+        document.addEventListener('DOMContentLoaded', function() {
+        
+            const linkLogo = document.getElementById('link-logo'); 
+            const linkCarrinho = document.getElementById('link-carrinho');
+            const linkOpcoes = document.getElementById('link-opcoes');
+            const linkSairMenu = document.getElementById('link-sair'); 
+            const linkContrato = document.getElementById('link-contrato'); 
+           
+            const telas = {
+                'catalogo': document.getElementById('tela-catalogo'), 
+                'locacao': document.getElementById('tela-locacao'), 
+                'opcoes': document.getElementById('tela-opcoes'),   
+                'contrato': document.getElementById('tela-contrato'), 
+                'sair': document.getElementById('tela-sair'),       
+            };
+        
+            function mostrarTela(telaAtiva) {
+                
+                for (const [nomeTela, elementoTela] of Object.entries(telas)) {
+                    
+                    if (elementoTela) { 
+                        if (nomeTela === telaAtiva) {
+                            elementoTela.classList.remove('hidden');
+
+                            if (nomeTela === 'calendario' && typeof calendar !== 'undefined') {
+                                calendar.render(); 
+                            }
+                        } else {
+                            elementoTela.classList.add('hidden');
+                        }
+                    }
+                }
+            }
+
+            
+            mostrarTela('catalogo');
+
+            if (linkLogo) {
+                linkLogo.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    mostrarTela('catalogo');
+                });
+            }
+            
+            if (linkCarrinho) {
+                linkCarrinho.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    mostrarTela('locacao'); 
+                });
+            }
+            
+            if (linkOpcoes) {
+                linkOpcoes.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    mostrarTela('opcoes');
+                });
+            } 
+
+            if (linkContrato) {
+                linkContrato.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    mostrarTela('contrato'); 
+                });
+            }
+            
+            if (linkSairMenu) {
+                linkSairMenu.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    mostrarTela('sair');
+                });
+            }
+        
+        });
+
+        //Quantidade de produtos na tela Carrinho
+
+        function updateQuantity(inputElement, amount) {
+            let currentValue = parseInt(inputElement.value);
+            const min = parseInt(inputElement.min) || 1;
+            const max = parseInt(inputElement.max) || Infinity;
+
+            let newValue = currentValue + amount;
+
+            if (newValue < min) {
+                newValue = min;
+            } else if (newValue > max) {
+                newValue = max;
+            }
+
+            inputElement.value = newValue;
+        }
+
+        const plusButtons = document.querySelectorAll('.plus-btn');
+
+        plusButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const container = event.target.closest('.estoque-info');
+                const inputField = container.querySelector('.quantity-field');
+                updateQuantity(inputField, 1);
+            });
+        });
+
+        const minusButtons = document.querySelectorAll('.minus-btn');
+
+        minusButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const container = event.target.closest('.estoque-info');
+                const inputField = container.querySelector('.quantity-field');
+                updateQuantity(inputField, -1);
+            });
+        });
+
+        // TRANSIÇÃO CARRIHO - FECHAR PDIDO 
+
+        const carrinhoWrapper = document.getElementById('carrinho-wrapper');
+        const btnIniciarCheckout = document.getElementById('btn-iniciar-checkout');
+        const btnVoltarCarrinho = document.getElementById('btn-voltar-carrinho');
+
+        if (btnIniciarCheckout && carrinhoWrapper) {
+            btnIniciarCheckout.addEventListener('click', function(event) {
+                event.preventDefault();
+                
+                carrinhoWrapper.classList.add('passo-2-ativo');
+                
+                document.querySelector('.titulo-carrinho').textContent = 'Dados para Locação'; 
+            });
+        }
+
+        if (btnVoltarCarrinho && carrinhoWrapper) {
+            btnVoltarCarrinho.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                carrinhoWrapper.classList.remove('passo-2-ativo');
+                
+                document.querySelector('.titulo-carrinho').textContent = 'Carrinho de compras'; 
+            });
+        }
+    
+        const formCheckout = document.getElementById('form-checkout');
+        if (formCheckout) {
+            formCheckout.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                alert('Avançar para Pagamento (Implementar navegação para QR Code)');
+                
+            });
+        }
+        </script>
+    
+    
+    <footer class="contato-fixo">
+        <div class="container-contato">
+            <h1 id="fale-conosco">Fale Conosco:</h1>
+            <a href="https://www.instagram.com/al3locacao/" target="_blank" class="link-social">
+                <i class='bx bxl-instagram'></i>
+                <span>Instagram</span>
+            </a>
+            <a href="https://wa.me/554899979376" target="_blank" class="link-social">
+                <i class='bx bxl-whatsapp'></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="mailto:arthurvelhocristiano@gmail.com" class="link-social">
+                <i class='bx bxs-envelope'></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
