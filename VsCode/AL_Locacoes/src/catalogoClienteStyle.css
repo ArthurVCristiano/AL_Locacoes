@@ -341,6 +341,26 @@ a {
     border-radius: 20px; 
     overflow: hidden;
 }
+
+.frete-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    color: #0056b3;
+}
+#frete-label{
+    width: 100%;
+    margin: 0;
+    padding: 10px; 
+    display: flex;
+    justify-content: left;
+    font-size: 1.3em;
+    color: #1b70ca;
+    border-color: var(--color-red-action);
+    background-color: #94949442;
+    border-radius: 20px;
+}
 .quantity-button {
     background: none;
     border: none;
@@ -410,73 +430,87 @@ a {
     font-size: 1.2em;
     cursor: pointer;
 }
-
-.frete-info {
-    padding-top: 15px;
-    border-top: 1px solid var(--color-border-light);
+#frete-texto{
+   width: 100%;
+    margin: 0;
+    padding: 10px; 
+    display: flex;
+    justify-content: left;
+    font-size: 1.3em;
+    color: #1b70ca;
+    border-color: var(--color-red-action);
+    background-color: #94949442;
+    border-radius: 20px;
 }
+
 .frete-label {
     font-weight: bold;
     margin-bottom: 5px;
+    background-color: #fff;
 }
 .frete-servico {
     font-size: 0.9em;
-    color: #666;
+    color: #fff;
 }
-
 #carrinho-wrapper {
     display: flex;
     width: 90%; 
     max-width: 450px; 
-    
-    /* ESSENCIAL: Esconde o passo 2 que está fora da tela */
     overflow: hidden; 
-    
-    /* Ativa a transição */
     transition: transform 0.5s ease-in-out;
-    
-    /* Centraliza o wrapper na tela */
     margin: 0 auto; 
 }
 
-/* Define que cada passo ocupa 100% da largura do wrapper e não encolhe */
 .carrinho-passo {
     min-width: 100%; 
     flex-shrink: 0; 
-    padding: 0 5px; /* Adiciona um pequeno padding para evitar quebras visuais */
+    padding: 0;      
+    margin: 0;
 }
 
-/* CLASSE QUE ACIONA O MOVIMENTO */
-#carrinho-wrapper.passo-2-ativo {
-    /* Move todo o conteúdo 100% para a esquerda */
-    transform: translateX(-100%);
+.carrinho-passo .carrinho-container {
+    width: 100%; 
+    padding: 20px; 
+    margin: 0;
+    background-color: var(--color-white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- Estilos do Passo 2 (Checkout) --- */
+#carrinho-passo-2 .titulo-checkout {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-primary, #0056b3);
+    margin-bottom: 20px;
+}
+
 .titulo-checkout {
     font-size: 1.2em;
     font-weight: bold;
     color: var(--color-primary, #0056b3);
     margin-bottom: 20px;
     text-align: center;
+    position: relative;
 }
-
-.form-group input, .form-group select {
-    width: 100%;
-    padding: 10px;
-    /* Certifique-se de que o display não seja 'none' */
+.form-group {
+    margin-bottom: 15px;
 }
-
-/* Garante que os rótulos apareçam */
 .form-group label {
-    display: block; /* Essencial para que a label apareça em sua própria linha */
+    display: block;
     margin-bottom: 5px;
 }
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
 
-
-/* Botão Secundário (Voltar) */
 #btn-voltar-carrinho {
-    /* Estilo para o botão "← Voltar" */
+   
     background-color: transparent;
     border: 1px solid #ccc;
     color: #666;

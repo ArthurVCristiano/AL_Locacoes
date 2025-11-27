@@ -8,6 +8,85 @@
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
     <link rel="stylesheet" href="catalogoClienteStyle.css"> 
     <title>AL Locações</title>
+    
+    <style>
+        .hidden {
+            display: none !important;
+        }
+        #carrinho-passo-2 {
+            display: none;
+        }
+        #carrinho-wrapper.passo-2-ativo #carrinho-passo-1 {
+            display: none;
+        }
+        #carrinho-wrapper.passo-2-ativo #carrinho-passo-2 {
+            display: block;
+        }
+        .produtos-carrinho-lista {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        #lista-carrinho {
+            list-style: none;
+            padding: 0;
+        }
+        .item-carrinho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .item-carrinho:last-child {
+            border-bottom: none;
+        }
+        .nome-produto {
+            flex: 2;
+        }
+        .detalhes {
+            flex: 3;
+            text-align: right;
+        }
+        .subtotal-item {
+            flex: 1.5;
+            text-align: right;
+            font-weight: bold;
+        }
+        .btn-remover {
+            margin-left: 10px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #carrinho-total h3 {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .pagamento-container {
+            max-width: 400px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .qrcode-area img {
+            width: 200px;
+            height: 200px;
+            margin: 15px 0;
+        }
+        .chave-pix-texto {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -28,7 +107,8 @@
         </ul>
     </header>
 
-    <main id="main-content-area"> <section id="tela-catalogo">
+    <main id="main-content-area"> 
+        <section id="tela-catalogo">
             <h1 class="titulo-catalogo">Catálogo de Produtos</h1>
             
             <div class="produtos-lista">
@@ -38,21 +118,31 @@
                 </div>
                 <div class="produto-detalhes">
                     <h2 class="produto-nome">Conjunto: Mesa + 4 Cadeiras</h2>
-                    <p class="produto-preco">R$ 13,00 <span class="unidade-texto">Conjunto</span></p>
+                    <p class="produto-preco">R$ 14,00 <span class="unidade-texto">Conjunto</span></p>
                     <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
-                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                    <button class="botao-comprar" onclick="adicionarAoCarrinho({
+                            id: 'conjunto', 
+                            nome: 'Conjunto: Mesa + 4 cadeiras', 
+                            preco: 14.00, 
+                            quantidade: 1 
+                        })">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
                     </div>
                 </article>
                 
                 <article class="produto-card" data-produto-id="2">
-		                <div class="produto-imagem">
+                        <div class="produto-imagem">
                     <img src="/assets/imagens/cadeira-de-plastico-latina-6734d1b466bdb.png" alt="Cadeira unitária">
                 </div>
                 <div class="produto-detalhes">
                     <h2 class="produto-nome">Cadeira unitária</h2>
                     <p class="produto-preco">R$ 3,00 <span class="unidade-texto">Unidade</span></p>
                     <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
-                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                    <button class="botao-comprar" onclick="adicionarAoCarrinho({
+                            id: 'cadeira', 
+                            nome: 'Cadeira unitária', 
+                            preco: 3.00, 
+                            quantidade: 1 
+                        })">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
                 </div>
                 </article>
                 
@@ -64,7 +154,12 @@
                     <h2 class="produto-nome">Mesa unitária</h2>
                     <p class="produto-preco">R$ 8,50 <span class="unidade-texto">Unidade</span></p>
                     <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
-                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                    <button class="botao-comprar"onclick="adicionarAoCarrinho({
+                            id: 'mesa', 
+                            nome: 'Mesa unitária', 
+                            preco: 8.50, 
+                            quantidade: 1 
+                        })">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
                 </div></article>
                 
                 <article class="produto-card" data-produto-id="4">
@@ -75,67 +170,97 @@
                     <h2 class="produto-nome">Toalha de Mesa - Branca</h2>
                     <p class="produto-preco">R$ 8,50<span class="unidade-texto">Unidade</span></p>
                     <p class="produto-estoque">Unidades restantes: COLCOAR VALOR RESTANTE DISPONIVEIS</p>
-                    <button class="botao-comprar">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
+                    <button class="botao-comprar" onclick="adicionarAoCarrinho({
+                            id: 'toalha', 
+                            nome: 'Toalha de Mesa', 
+                            preco: 8.5, 
+                            quantidade: 1 
+                        })">Adicionar ao carrinho<i class='bx bx-cart-add'></i></button>
                 </div></article>
             </div>
         </section>
 
         <section id="tela-locacao" class="hidden"> 
-    <h1 class="page-title titulo-carrinho">Carrinho de compras</h1>
+            <h1 class="page-title titulo-carrinho">Carrinho de compras</h1>
 
-    <div id="carrinho-wrapper" class="transicao-wrapper">
-        
-        <div id="carrinho-passo-1" class="carrinho-passo">
-            <div class="carrinho-container">
+            <div id="carrinho-wrapper" class="transicao-wrapper">
                 
-                <button id="btn-iniciar-checkout" class="fechar-pedido-btn">Fechar Pedido (QUANTIDADE DE itens)</button>
-                
-                <div class="subtotal-info">
-                    <p>Subtotal: R$ VALOR TOTAL</p>
-                    <p>Frete e Manuseio: R$ VALOR DE FRETE</p>
+                <div id="carrinho-passo-1" class="carrinho-passo">
+                    <div class="carrinho-container">
+                        
+                        <button id="btn-iniciar-checkout" class="fechar-pedido-btn">Fechar Pedido (0 itens)</button>
+                        
+                        <div class="subtotal-info">
+                            <p>Subtotal: R$ VALOR TOTAL</p>
+                            <p>Frete e Manuseio: R$ VALOR DE FRETE</p>
+                        </div>
+                        
+                        <div class="produtos-carrinho-lista">
+                            <section id="carrinho-display">
+                                <h2>Seu Carrinho</h2>
+                                <ul id="lista-carrinho">
+                                    </ul>
+                                <div id="carrinho-total">
+                                    </div>
+                            </section>
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+                <div id='carrinho-passo-2' class="carrinho-passo">
+                    <div class="carrinho-container">
+                        <h2 class="titulo-checkout">Dados para Locação</h2>
+                        
+                        <form id="form-checkout">
+                            <div class="form-group">
+                                <label for="nome-cliente-checkout">Nome:</label>
+                                <input type="text" id="nome-cliente-checkout" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="endereco-entrega">Endereço de Entrega:</label>
+                                <input type="text" id="endereco-entrega" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="data-inicio-loc">Data de Início:</label>
+                                <input type="date" id="data-inicio-loc" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data-fim-loc">Data de Fim:</label>
+                                <input type="date" id="data-fim-loc" required>
+                            </div>
+
+                            <button type="button" id="btn-voltar-carrinho" class="btn-secundario">← Voltar</button>
+                            <button type="submit" id="btn-avancar-pagamento" class="fechar-pedido-btn">Avançar para Pagamento</button>
+                        </form>
+                    </div>
                 </div>
                 
-                <div class="produtos-carrinho-lista">
-                    </div>
-                
-                <div class="frete-info">
-                    <p class="frete-label">Frete:</p>
-                    <p class="frete-servico">Servidão João Pedro Cristiano, 160</p>
-                </div>
+            </div> 
+        </section>
 
-            </div>
-        </div>
-
-        <div id="carrinho-passo-2" class="carrinho-passo">
-            <div class="carrinho-container">
-                <h2 class="titulo-checkout">Dados para Locação</h2>
+        <section id="tela-pagamento" class="hidden">
+            <h1 class="page-title">Pagamento via PIX</h1>
+            
+            <div class="pagamento-container">
+                <h2>Valor Total: <span id="valor-final-pix">R$ 0,00</span></h2>
                 
-                <form id="form-checkout">
-                    <div class="form-group">
-                        <label for="nome-cliente-checkout">Nome:</label>
-                        <input type="text" id="nome-cliente-checkout" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="endereco-entrega">Endereço de Entrega:</label>
-                        <input type="text" id="endereco-entrega" required>
-                    </div>
+                <div class="qrcode-area">
+                    <p>Escaneie o QR Code abaixo para efetuar o pagamento:</p>
                     
-                    <div class="form-group">
-                        <label for="data-inicio-loc">Data de Início:</label>
-                        <input type="date" id="data-inicio-loc" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="data-fim-loc">Data de Fim:</label>
-                        <input type="date" id="data-fim-loc" required>
-                    </div>
 
-                    <button type="button" id="btn-voltar-carrinho" class="btn-secundario">← Voltar</button>
-                    <button type="submit" id="btn-avancar-pagamento" class="fechar-pedido-btn">Avançar para Pagamento</button>
-                </form>
+[Image of a placeholder QR code]
+ 
+                    <img src="https://via.placeholder.com/250" alt="QR Code PIX para pagamento" id="qrcode-pix">
+                    <p class="chave-pix-texto">Chave PIX Copia e Cola (simulada): **AL_Locacao.Simulacao**</p>
+                </div>
+                
+                <button id="btn-voltar-checkout" class="btn-secundario">← Voltar aos Dados</button>
+                <button id="btn-finalizar-pedido" class="fechar-pedido-btn">Finalizar e Confirmar Pedido</button>
             </div>
-        </div>
-        
-    </div> </section>
+        </section>
         
         <section id="tela-opcoes" class="hidden">
             <div class="header-opcoes">
@@ -149,7 +274,7 @@
         </section>
 
         <section id="tela-contrato" class="hidden">
-            </section>
+        </section>
         
         <section id="tela-sair" class="hidden">
             <h2>Tela de Saída</h2>
@@ -161,6 +286,128 @@
     <footer class="contato-fixo">...</footer>
 
     <script>   
+        
+        const telas = {
+            'catalogo': null, 
+            'locacao': null,
+            'opcoes': null,  
+            'contrato': null,
+            'sair': null,      
+            'pagamento': null, 
+        };
+
+        function mostrarTela(telaAtiva) {
+
+            for (const nomeTela in telas) {
+                if (telas[nomeTela] === null) {
+                    telas[nomeTela] = document.getElementById(`tela-${nomeTela}`);
+                }
+            }
+            
+            for (const nomeTela in telas) {
+                const elementoTela = telas[nomeTela];
+                if (elementoTela) { 
+                    if (nomeTela === telaAtiva) {
+                        elementoTela.classList.remove('hidden');
+                    } else {
+                        elementoTela.classList.add('hidden');
+                    }
+                }
+            }
+        }
+
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoLocacao')) || [];
+
+        function salvarCarrinho() {
+            localStorage.setItem('carrinhoLocacao', JSON.stringify(carrinho));
+        }
+
+        /**
+         * 
+         * @param {Object} novoItem 
+         */
+        window.adicionarAoCarrinho = function(novoItem) {
+            carrinho = JSON.parse(localStorage.getItem('carrinhoLocacao')) || [];
+            
+            const itemExistente = carrinho.find(item => item.id === novoItem.id);
+
+            if (itemExistente) {
+                itemExistente.quantidade += novoItem.quantidade;
+            } else {
+                carrinho.push({...novoItem}); 
+            }
+            
+            salvarCarrinho();
+            alert(`"${novoItem.nome}" adicionado(s) ao carrinho!`);
+        }
+
+        /**
+         * 
+         * @param {number} index 
+         */
+        window.removerItem = function(index) {
+            carrinho = JSON.parse(localStorage.getItem('carrinhoLocacao')) || [];
+            carrinho.splice(index, 1); 
+            salvarCarrinho();
+            renderizarCarrinho(); 
+        }
+
+        function renderizarCarrinho() {
+            carrinho = JSON.parse(localStorage.getItem('carrinhoLocacao')) || [];
+
+            const listaCarrinhoElement = document.getElementById('lista-carrinho');
+            const totalCarrinhoElement = document.getElementById('carrinho-total');
+            const btnCheckout = document.getElementById('btn-iniciar-checkout');
+            const valorFinalPixElement = document.getElementById('valor-final-pix');
+
+            if (!listaCarrinhoElement || !totalCarrinhoElement) return;
+
+            listaCarrinhoElement.innerHTML = ''; 
+            let totalGeral = 0;
+            let htmlItens = '';
+
+            if (carrinho.length === 0) {
+                listaCarrinhoElement.innerHTML = '<p>Seu carrinho de locação está vazio.</p>';
+                totalCarrinhoElement.innerHTML = '';
+                if (btnCheckout) btnCheckout.textContent = `Fechar Pedido (0 itens)`;
+                if (valorFinalPixElement) valorFinalPixElement.textContent = 'R$ 0,00';
+                return;
+            }
+
+            carrinho.forEach((item, index) => {
+                const subtotal = item.preco * item.quantidade;
+                totalGeral += subtotal;
+
+                htmlItens += `
+                    <li class="item-carrinho">
+                        <div class="nome-produto">**${item.nome}**</div>
+                        <div class="detalhes">
+                            Qtd: ${item.quantidade} x R$ ${item.preco.toFixed(2).replace('.', ',')}
+                        </div>
+                        <div class="subtotal-item">
+                            Subtotal: **R$ ${subtotal.toFixed(2).replace('.', ',')}**
+                        </div>
+                        <button class="btn-remover" onclick="removerItem(${index})">
+                            <i class='bx bx-trash'></i> Remover
+                        </button>
+                    </li>
+                `;
+            });
+            
+            listaCarrinhoElement.innerHTML = htmlItens;
+            totalCarrinhoElement.innerHTML = `
+                <h3>Valor Total: **R$ ${totalGeral.toFixed(2).replace('.', ',')}**</h3>
+            `;
+
+            if (btnCheckout) {
+                btnCheckout.textContent = `Fechar Pedido (${carrinho.length} itens)`;
+            }
+
+            if (valorFinalPixElement) {
+                valorFinalPixElement.textContent = `R$ ${totalGeral.toFixed(2).replace('.', ',')}`;
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
         
             const linkLogo = document.getElementById('link-logo'); 
@@ -168,149 +415,74 @@
             const linkOpcoes = document.getElementById('link-opcoes');
             const linkSairMenu = document.getElementById('link-sair'); 
             const linkContrato = document.getElementById('link-contrato'); 
-           
-            const telas = {
-                'catalogo': document.getElementById('tela-catalogo'), 
-                'locacao': document.getElementById('tela-locacao'), 
-                'opcoes': document.getElementById('tela-opcoes'),   
-                'contrato': document.getElementById('tela-contrato'), 
-                'sair': document.getElementById('tela-sair'),       
-            };
-        
-            function mostrarTela(telaAtiva) {
-                
-                for (const [nomeTela, elementoTela] of Object.entries(telas)) {
-                    
-                    if (elementoTela) { 
-                        if (nomeTela === telaAtiva) {
-                            elementoTela.classList.remove('hidden');
-
-                            if (nomeTela === 'calendario' && typeof calendar !== 'undefined') {
-                                calendar.render(); 
-                            }
-                        } else {
-                            elementoTela.classList.add('hidden');
-                        }
-                    }
-                }
-            }
-
             
+
             mostrarTela('catalogo');
 
-            if (linkLogo) {
-                linkLogo.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    mostrarTela('catalogo');
-                });
-            }
+            if (linkLogo) linkLogo.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('catalogo'); });
             
             if (linkCarrinho) {
                 linkCarrinho.addEventListener('click', function(event) {
                     event.preventDefault(); 
+                    mostrarTela('locacao');
+                    renderizarCarrinho(); 
+                });
+            }
+            
+            if (linkOpcoes) linkOpcoes.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('opcoes'); });
+            if (linkContrato) linkContrato.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('contrato'); });
+            if (linkSairMenu) linkSairMenu.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('sair'); });
+
+            const carrinhoWrapper = document.getElementById('carrinho-wrapper');
+            const btnIniciarCheckout = document.getElementById('btn-iniciar-checkout');
+            const btnVoltarCarrinho = document.getElementById('btn-voltar-carrinho');
+
+            if (btnIniciarCheckout && carrinhoWrapper) {
+                btnIniciarCheckout.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    carrinhoWrapper.classList.add('passo-2-ativo');
+                    document.querySelector('.titulo-carrinho').textContent = 'Dados para Locação'; 
+                });
+            }
+
+            if (btnVoltarCarrinho && carrinhoWrapper) {
+                btnVoltarCarrinho.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    carrinhoWrapper.classList.remove('passo-2-ativo');
+                    document.querySelector('.titulo-carrinho').textContent = 'Carrinho de compras'; 
+                });
+            }
+
+            const formCheckout = document.getElementById('form-checkout');
+            if (formCheckout) {
+                formCheckout.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    mostrarTela('pagamento');
+                });
+            }
+
+            const btnVoltarCheckout = document.getElementById('btn-voltar-checkout');
+            if (btnVoltarCheckout) {
+                btnVoltarCheckout.addEventListener('click', function() {
                     mostrarTela('locacao'); 
+                    document.getElementById('carrinho-wrapper').classList.add('passo-2-ativo');
+                    document.querySelector('.titulo-carrinho').textContent = 'Dados para Locação';
                 });
             }
             
-            if (linkOpcoes) {
-                linkOpcoes.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    mostrarTela('opcoes');
-                });
-            } 
-
-            if (linkContrato) {
-                linkContrato.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    mostrarTela('contrato'); 
+            const btnFinalizarPedido = document.getElementById('btn-finalizar-pedido');
+            if (btnFinalizarPedido) {
+                btnFinalizarPedido.addEventListener('click', function() {
+                    alert('Pedido finalizado com sucesso! Aguardando confirmação do PIX.');
+                    localStorage.removeItem('carrinhoLocacao');
+                    carrinho = [];
+                    
+                    mostrarTela('catalogo');
                 });
             }
-            
-            if (linkSairMenu) {
-                linkSairMenu.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    mostrarTela('sair');
-                });
-            }
-        
         });
+    </script>
 
-        //Quantidade de produtos na tela Carrinho
-
-        function updateQuantity(inputElement, amount) {
-            let currentValue = parseInt(inputElement.value);
-            const min = parseInt(inputElement.min) || 1;
-            const max = parseInt(inputElement.max) || Infinity;
-
-            let newValue = currentValue + amount;
-
-            if (newValue < min) {
-                newValue = min;
-            } else if (newValue > max) {
-                newValue = max;
-            }
-
-            inputElement.value = newValue;
-        }
-
-        const plusButtons = document.querySelectorAll('.plus-btn');
-
-        plusButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const container = event.target.closest('.estoque-info');
-                const inputField = container.querySelector('.quantity-field');
-                updateQuantity(inputField, 1);
-            });
-        });
-
-        const minusButtons = document.querySelectorAll('.minus-btn');
-
-        minusButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const container = event.target.closest('.estoque-info');
-                const inputField = container.querySelector('.quantity-field');
-                updateQuantity(inputField, -1);
-            });
-        });
-
-        // TRANSIÇÃO CARRIHO - FECHAR PDIDO 
-
-        const carrinhoWrapper = document.getElementById('carrinho-wrapper');
-        const btnIniciarCheckout = document.getElementById('btn-iniciar-checkout');
-        const btnVoltarCarrinho = document.getElementById('btn-voltar-carrinho');
-
-        if (btnIniciarCheckout && carrinhoWrapper) {
-            btnIniciarCheckout.addEventListener('click', function(event) {
-                event.preventDefault();
-                
-                carrinhoWrapper.classList.add('passo-2-ativo');
-                
-                document.querySelector('.titulo-carrinho').textContent = 'Dados para Locação'; 
-            });
-        }
-
-        if (btnVoltarCarrinho && carrinhoWrapper) {
-            btnVoltarCarrinho.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                carrinhoWrapper.classList.remove('passo-2-ativo');
-                
-                document.querySelector('.titulo-carrinho').textContent = 'Carrinho de compras'; 
-            });
-        }
-    
-        const formCheckout = document.getElementById('form-checkout');
-        if (formCheckout) {
-            formCheckout.addEventListener('submit', function(event) {
-                event.preventDefault();
-                
-                alert('Avançar para Pagamento (Implementar navegação para QR Code)');
-                
-            });
-        }
-        </script>
-    
-    
     <footer class="contato-fixo">
         <div class="container-contato">
             <h1 id="fale-conosco">Fale Conosco:</h1>
