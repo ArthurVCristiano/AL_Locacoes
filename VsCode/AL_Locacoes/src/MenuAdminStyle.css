@@ -199,7 +199,7 @@ body {
     padding-left: 20px;
 }
 
-.botao-novo-cliente{
+#btn-novo-cliente{
     width: 20%;
     height: 50px;
     background-color: transparent;
@@ -218,11 +218,111 @@ body {
     left: 650px;
 }
 
-.botao-novo-cliente:hover{
+#btn-novo-cliente:hover{
     background-color: #1A439F;
     border: 2px solid rgba(255, 255, 255, .2);
     color: white;
     transition: 0.5s;
+}
+
+/* POP-UP criar cliente */
+
+.hidden {
+    display: none !important;
+}
+
+.modal {
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px; 
+    position: relative;
+    animation: fadeIn 0.3s; 
+}
+
+
+.titulo-cadastro{
+    color: #1A439F;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.close-btn {
+    color: #1A439F;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0056b3;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.btn-salvar {
+    background-color: #0056b3; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 30px;
+    transition: background-color 0.2s;
+    position: relative;
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+}
+.btn-salvar:hover {
+    background-color: #004494;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Tela de estoque */
@@ -272,7 +372,7 @@ body {
     padding-left: 20px;
 }
 
-.botao-novo-produto{
+#btn-novo-produto{
     width: 20%;
     height: 50px;
     background-color: transparent;
@@ -291,7 +391,34 @@ body {
     left: 650px;
 }
 
-.botao-novo-produto:hover{
+#btn-novo-produto:hover{
+    background-color: #1A439F;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: white;
+    transition: 0.5s;
+}
+
+
+#btn-novo-locacao{
+    width: 20%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    border-color: #1A439F;
+    cursor: pointer;
+    font-size: 16px;
+    color: #1A439F;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    top: 0px;
+    left: 650px;
+}
+
+#btn-novo-locacao:hover{
     background-color: #1A439F;
     border: 2px solid rgba(255, 255, 255, .2);
     color: white;

@@ -69,7 +69,7 @@
         <div class="estoque-container">
             <h3 class="titulo-listaProdutos">Produtos</h3>
             <p class="produtos-list">BOTAR Podutos AQUI -></p>
-            <button class="botao-novo-produto">Novo Produto</button>
+            <button id = 'btn-novo-produto'>Novo Produto</button>
         </div>
     </section>
 
@@ -129,6 +129,7 @@
         <p id="locacoes-list">Conteúdo da tela de locações.</p>
         <div class="locacoes-conteiner">
             <h1 id="conteudo-locacoes">Colocar locações aqui</h1>
+            <button id='btn-novo-locacao'>Registrar Nova Locação</button>
         </div>
     </section>
 
@@ -142,18 +143,97 @@
         <div class="cliente-container">
             <h3 class="titulo-listaClientes">Lista de Clientes</h3>
             <p class="clientes-list">BOTAR CLIENTES AQUI -></p>
-            <button class="botao-novo-cliente">Novo Cliente</button>
+            <button id='btn-novo-cliente'>Novo Cliente</button>
         </div>
     </section>
 
     
 </main>
 
+
+<!-- Botão de criar novo cliente -->
+<div id="cadastro-modal-cliente" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn close-btn-cliente">&times;</span> 
+        <h2 class="titulo-cadastro">Cadastro de Novo Cliente</h2>
+        
+        <form id="form-cliente">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome-cliente" name="nome" required> </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email-cliente" name="email" required> </div>
+            <div class="form-group">
+                <label for="telefone">Telefone/WhatsApp:</label>
+                <input type="tel" id="telefone-cliente" name="telefone"> </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco-cliente" name="endereco"> </div>
+            <button type="submit" class="btn-salvar">Salvar Cliente</button>
+        </form>
+    </div>
+</div>
+
+
+<div id="cadastro-modal-produto" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span> <h2 class="titulo-cadastro">Cadastro de Novo Produto</h2>
+        
+        <form id="form-produto">
+            <div class="form-group">
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Quantidade em estoque:</label>
+                <input type="number" id="numer" name="number" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Valor de venda:</label>
+                <input type="number" id="number" name="number">
+            </div>
+            <div class="form-group">
+                <label for="text">Descrição: (opcional)</label>
+                <input type="text" id="desc" name="desc">
+            </div>
+            <button type="submit" class="btn-salvar">Salvar Produto</button>
+        </form>
+
+    </div>
+</div>
+
+<div id="cadastro-modal-locacao" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn close-btn-locacao">&times;</span> 
+        <h2 class="titulo-cadastro">Cadastro de Nova Locação</h2>
+        
+        <form id="form-locacao">
+            <div class="form-group">
+                <label for="clientes-nome">Nome Completo:</label>
+                <input type="checkbox" id="clientes" name="clientes" required> </div>
+            <div class="form-group">
+                <label for="tel">Número de contato do cliente: (Puxar automaticamente do cliente selecionado no checkbox)</label>
+                <input type="tel" id="tel" name="tel" required> </div>
+            <div class="form-group">
+                <label for="endereco-text">Endereço:</label>
+                <input type="text" id="text" name="text"> </div>
+            <div class="form-group">
+                <label for="data-inicio">Data de inicio:</label>
+                <input type="date" id="dataInicioLocacao" name="dataInicio"> </div>
+            <div class="form-group">
+                <label for="data">Data de retirada:</label>
+                <input type="date" id="dataRetiradaLocacao" name="dataRetirada"> </div>
+            <button type="submit" class="btn-salvar">Salvar Cliente</button>
+        </form>
+    </div>
+</div>
+
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        
+       
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth', 
@@ -182,14 +262,13 @@
         const linkVoltarOpcoes = document.getElementById('link-voltar-opcoes');
         const linkSair = document.getElementById('link-sair');
     
-        
         const telaCalendario = document.getElementById('tela-calendario');
         const telaCliente = document.getElementById('tela-cliente');
         const telaEstoque = document.getElementById('tela-estoque');
         const telaOpcoes = document.getElementById('tela-opcoes');
         const telaAlocacoes = document.getElementById('tela-alocacoes');
         const telaContrato = document.getElementById('tela-contrato');
-        
+     
         function mostrarTela(tela) {
 
             telaCalendario.classList.add('hidden');
@@ -199,23 +278,12 @@
             telaAlocacoes.classList.add('hidden');
             telaContrato.classList.add('hidden');
 
-
             switch (tela) {
-                case 'cliente':
-                    telaCliente.classList.remove('hidden');
-                    break;
-                case 'estoque':
-                    telaEstoque.classList.remove('hidden');
-                    if (typeof calendar !== 'undefined') {
-                        calendar.render(); 
-                    }
-                    break;
-                case 'opcoes':
-                    telaOpcoes.classList.remove('hidden');
-                    break;
-                case 'alocacoes':
-                    telaAlocacoes.classList.remove('hidden');
-                    break;
+                case 'cliente': telaCliente.classList.remove('hidden'); break;
+                case 'estoque': telaEstoque.classList.remove('hidden'); break;
+                case 'opcoes': telaOpcoes.classList.remove('hidden'); break;
+                case 'alocacoes': telaAlocacoes.classList.remove('hidden'); break;
+                case 'contrato': telaContrato.classList.remove('hidden'); break;
                 case 'calendario':
                 default:
                     telaCalendario.classList.remove('hidden');
@@ -223,75 +291,61 @@
                         calendar.render(); 
                     }
                     break;
-                case 'contrato':
-                
-                    telaContrato.classList.remove('hidden');
-                    if (typeof contrato !== 'undefined') {
-                        contrato.render(); 
-                    }
-                    break;
             }
-
         }
         
-        if (linkCliente) {
-            linkCliente.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                mostrarTela('cliente');
-            });
-        }
-        if (linkEstoque) {
-            linkEstoque.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                mostrarTela('estoque');
-            });
-        }
-        if (linkOpcoes) {
-            linkOpcoes.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                mostrarTela('opcoes');
-            });
-        }
+        if (linkCliente) linkCliente.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('cliente'); });
+        if (linkEstoque) linkEstoque.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('estoque'); });
+        if (linkOpcoes) linkOpcoes.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('opcoes'); });
+        if (linkAlocacoes) linkAlocacoes.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('alocacoes'); });
+        if (linkSair) linkSair.addEventListener('click', function(event) { event.preventDefault(); window.location.href = 'Login.html'; });
+        if (linkLogo) linkLogo.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('calendario'); });
+        if (linkContrato) linkContrato.addEventListener('click', function(event) { event.preventDefault(); if (telaContrato) { mostrarTela('contrato'); } });
+        if (linkVoltarOpcoes) linkVoltarOpcoes.addEventListener('click', function(event) { event.preventDefault(); mostrarTela('opcoes'); });
+    
 
-        if (linkAlocacoes) {
-            linkAlocacoes.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                mostrarTela('alocacoes');
-            });
-        }
-
-        if (linkSair) {
-            linkSair.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                window.location.href = 'Login.html';
-            });
-        }
-
-        if (linkLogo) {
-            linkLogo.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                mostrarTela('calendario');
-            });
-        }
-        if (linkContrato) {
-    linkContrato.addEventListener('click', function(event) {
-        event.preventDefault(); 
+        const btnNovoCliente = document.getElementById('btn-novo-cliente');
+        const btnNovoProduto = document.getElementById('btn-novo-produto');
+        const btnNovaLocacao = document.getElementById('btn-novo-locacao'); 
         
-        if (telaContrato) {
-            telaContrato.classList.remove('hidden');
-                }
-            });
-        }
+        const modalCliente = document.getElementById('cadastro-modal-cliente');
+        const modalProduto = document.getElementById('cadastro-modal-produto');
+        const modalLocacao = document.getElementById('cadastro-modal-locacao'); 
+        
+        const closeBtnCliente = document.querySelector('.close-btn-cliente');
+        const closeBtnProduto = document.querySelector('.close-btn'); 
+        const closeBtnLocacao = document.querySelector('.close-btn-locacao');
+        
+        if (btnNovoCliente) btnNovoCliente.addEventListener('click', function() { modalCliente.classList.remove('hidden'); });
+        if (btnNovoProduto) btnNovoProduto.addEventListener('click', function() { modalProduto.classList.remove('hidden'); });
+        if (btnNovaLocacao) btnNovaLocacao.addEventListener('click', function() { modalLocacao.classList.remove('hidden'); });
 
-        if (linkVoltarOpcoes) {
-            linkVoltarOpcoes.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                
-                if (telaContrato) {
-                    telaContrato.classList.add('hidden');
-                }
-            });
-        }
+        if (closeBtnCliente) closeBtnCliente.addEventListener('click', function() { modalCliente.classList.add('hidden'); });
+        if (closeBtnProduto) closeBtnProduto.addEventListener('click', function() { modalProduto.classList.add('hidden'); }); 
+        if (closeBtnLocacao) closeBtnLocacao.addEventListener('click', function() { modalLocacao.classList.add('hidden'); });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modalCliente) modalCliente.classList.add('hidden');
+            if (event.target === modalProduto) modalProduto.classList.add('hidden');
+            if (event.target === modalLocacao) modalLocacao.classList.add('hidden');
+        });
+
+        // AQUI VAI FAZER A INTEGRAÇÃO COM BANCO DE DADOS ->
+
+        const formCliente = document.getElementById('form-cliente');
+        const formProduto = document.getElementById('form-produto');
+        const formLocacao = document.getElementById('form-locacao');
+
+        if (formCliente) formCliente.addEventListener('submit', function(event) { event.preventDefault(); alert('Cliente cadastrado!'); modalCliente.classList.add('hidden'); formCliente.reset(); });
+        if (formProduto) formProduto.addEventListener('submit', function(event) { event.preventDefault(); alert('Produto cadastrado!'); modalProduto.classList.add('hidden'); formProduto.reset(); });
+        if (formLocacao) formLocacao.addEventListener('submit', function(event) { 
+            event.preventDefault(); 
+            const dataInicio = formLocacao.querySelector('#dataInicioLocacao').value;
+            alert('Locação com início em ' + dataInicio + ' cadastrada! (Simulado)');
+            if (modalLocacao) modalLocacao.classList.add('hidden'); 
+            formLocacao.reset(); 
+        });
+        
     });
 </script>
 

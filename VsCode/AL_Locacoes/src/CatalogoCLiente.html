@@ -81,93 +81,61 @@
         </section>
 
         <section id="tela-locacao" class="hidden"> 
+    <h1 class="page-title titulo-carrinho">Carrinho de compras</h1>
 
-    <main id="locacao-main">
-        <h1 class="page-title titulo-carrinho">Carrinho de compras</h1>
-
-        <div class="carrinho-container">
-            
-            <div class="header-carrinho">
-                <button class="fechar-pedido-btn">Fechar Pedido (QUANTIDADE DE itens)</button>
+    <div id="carrinho-wrapper" class="transicao-wrapper">
+        
+        <div id="carrinho-passo-1" class="carrinho-passo">
+            <div class="carrinho-container">
+                
+                <button id="btn-iniciar-checkout" class="fechar-pedido-btn">Fechar Pedido (QUANTIDADE DE itens)</button>
+                
                 <div class="subtotal-info">
                     <p>Subtotal: R$ VALOR TOTAL</p>
                     <p>Frete e Manuseio: R$ VALOR DE FRETE</p>
                 </div>
-            </div>
-
-            <div class="produtos-carrinho-lista">
                 
-                <div class="item-carrinho" data-id="ID01">
-                    <div class="item-info">
-                        <img src="/assets/imagens/cadeira-de-plastico-latina-6734d1b466bdb.png" alt="Cadeira de Plástico" class="item-imagem">
-                        <div class="item-detalhes">
-                            <p class="item-nome">(EXEMPLO NOME PROD. CATALOGO)Cadeira de Plástico - Modelo Simples</p>
-                            <p class="item-data">Data de entrega: DATA ENTREGA LOCAÇÃO</p>
-                        </div>
+                <div class="produtos-carrinho-lista">
                     </div>
-                    <div class="item-controles">
-                        <div class="estoque-info">
-                            
-                            <button class="quantity-button minus-btn" type="button" onclick="decreaseQuantity()">-</button>
-                            <input type="number" id="quantity-field" class="quantity-field" value="1" min="1" max="100" readonly>
-                            <button class="quantity-button plus-btn" type="button" onclick="increaseQuantity()">+</button>
-
-                        </div>
-                        <span class="item-estoque">Em estoque</span>
-                        <button class="btn-remover"><i class='bx bx-trash'></i></button>
-                    </div>
-                </div>
                 
-                <div class="item-carrinho" data-id="ID02">
-                    <div class="item-info">
-                        <img src="/assets/imagens/MesaPlastico.jpg" alt="Mesa de Plástico" class="item-imagem">
-                        <div class="item-detalhes">
-                            <p class="item-nome">(EXEMPLO NOME PROD. CATALOGO)Mesa de Plástico - Modelo Simples</p>
-                            <p class="item-data">Data de entrega: DATA ENTREGA LOCAÇÃO</p>
-                        </div>
-                    </div>
-                    <div class="item-controles">
-                        <div class="estoque-info">
-                            
-                            <button class="quantity-button minus-btn" type="button" onclick="decreaseQuantity()">-</button>
-                            <input type="number" id="quantity-field" class="quantity-field" value="1" min="1" max="100" readonly>
-                            <button class="quantity-button plus-btn" type="button" onclick="increaseQuantity()">+</button>
-
-                        </div>
-                        <span class="item-estoque">Em estoque</span>
-                        <button class="btn-remover"><i class='bx bx-trash'></i></button>
-                    </div>
+                <div class="frete-info">
+                    <p class="frete-label">Frete:</p>
+                    <p class="frete-servico">Servidão João Pedro Cristiano, 160</p>
                 </div>
 
-                <div class="item-carrinho" data-id="ID03">
-                    <div class="item-info">
-                        <img src="/assets/imagens/conjuntoPlastico.png" alt="Conjunto Mesa e Cadeira" class="item-imagem">
-                        <div class="item-detalhes">
-                            <p class="item-nome">(EXEMPLO NOME PROD. CATALOGO)Conjunto Mesa e Cadeira - 4 Cadeiras</p>
-                            <p class="item-data">Data de entrega: DATA ENTREGA LOCAÇÃO</p>
-                        </div>
-                    </div>
-                    <div class="item-controles">
-                        <div class="estoque-info">
-                            
-                            <button class="quantity-button minus-btn" type="button" onclick="decreaseQuantity()">-</button>
-                            <input type="number" id="quantity-field" class="quantity-field" value="1" min="1" max="100" readonly>
-                            <button class="quantity-button plus-btn" type="button" onclick="increaseQuantity()">+</button>
-
-                        </div>
-                        <span class="item-estoque">Em estoque</span>
-                        <button class="btn-remover"><i class='bx bx-trash'></i></button>
-                    </div>
-                </div>
-
-            </div> <div class="frete-info">
-                <p class="frete-label">Frete:</p>
-                <p class="frete-servico">Servidão João Pedro Cristiano, 160</p>
             </div>
+        </div>
 
-        </div> </main>
+        <div id="carrinho-passo-2" class="carrinho-passo">
+            <div class="carrinho-container">
+                <h2 class="titulo-checkout">Dados para Locação</h2>
+                
+                <form id="form-checkout">
+                    <div class="form-group">
+                        <label for="nome-cliente-checkout">Nome:</label>
+                        <input type="text" id="nome-cliente-checkout" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco-entrega">Endereço de Entrega:</label>
+                        <input type="text" id="endereco-entrega" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="data-inicio-loc">Data de Início:</label>
+                        <input type="date" id="data-inicio-loc" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-fim-loc">Data de Fim:</label>
+                        <input type="date" id="data-fim-loc" required>
+                    </div>
 
-</section>
+                    <button type="button" id="btn-voltar-carrinho" class="btn-secundario">← Voltar</button>
+                    <button type="submit" id="btn-avancar-pagamento" class="fechar-pedido-btn">Avançar para Pagamento</button>
+                </form>
+            </div>
+        </div>
+        
+    </div> </section>
         
         <section id="tela-opcoes" class="hidden">
             <div class="header-opcoes">
@@ -304,7 +272,43 @@
                 updateQuantity(inputField, -1);
             });
         });
-    </script>
+
+        // TRANSIÇÃO CARRIHO - FECHAR PDIDO 
+
+        const carrinhoWrapper = document.getElementById('carrinho-wrapper');
+        const btnIniciarCheckout = document.getElementById('btn-iniciar-checkout');
+        const btnVoltarCarrinho = document.getElementById('btn-voltar-carrinho');
+
+        if (btnIniciarCheckout && carrinhoWrapper) {
+            btnIniciarCheckout.addEventListener('click', function(event) {
+                event.preventDefault();
+                
+                carrinhoWrapper.classList.add('passo-2-ativo');
+                
+                document.querySelector('.titulo-carrinho').textContent = 'Dados para Locação'; 
+            });
+        }
+
+        if (btnVoltarCarrinho && carrinhoWrapper) {
+            btnVoltarCarrinho.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                carrinhoWrapper.classList.remove('passo-2-ativo');
+                
+                document.querySelector('.titulo-carrinho').textContent = 'Carrinho de compras'; 
+            });
+        }
+    
+        const formCheckout = document.getElementById('form-checkout');
+        if (formCheckout) {
+            formCheckout.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                alert('Avançar para Pagamento (Implementar navegação para QR Code)');
+                
+            });
+        }
+        </script>
     
     
     <footer class="contato-fixo">
